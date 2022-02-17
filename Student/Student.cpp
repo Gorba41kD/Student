@@ -4,47 +4,47 @@ Student::Student()
 {
 }
 
-void Student::SetSurname(std::string surname)
+void Student::SetSurname(const std::string surname)
 {
 	m_surname = surname;
 }
-std::string Student::GetSurname()
+std::string Student::GetSurname()const
 {
 	return m_surname;
 }
 ////////////////////////////////////////
-void Student::SetName(std::string name)
+void Student::SetName(const std::string name)
 {
 	m_name = name;
 }
-std::string Student::GetName()
+std::string Student::GetName()const
 {
 	return m_name;
 }
 ////////////////////////////////////////
-void Student::SetAge(int age)
+void Student::SetAge(const int age)
 {
 	m_age = age;
 }
-int Student::GetAge()
+int Student::GetAge()const
 {
 	return m_age;
 }
 ////////////////////////////////////////
-void Student::SetSpec(std::string spec)
+void Student::SetSpec(const std::string spec)
 {
 	m_spec = spec;
 }
-std::string Student::GetSpec()
+std::string Student::GetSpec()const
 {
 	return m_spec;
 }
 ////////////////////////////////////////
-void Student::SetHobby(std::string hobby)
+void Student::SetHobby(const std::string hobby)
 {
 	m_hobby = hobby;
 }
-std::string Student::GetHobby()
+std::string Student::GetHobby()const
 {
 	return m_hobby;
 }

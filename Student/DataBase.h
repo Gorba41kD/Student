@@ -9,14 +9,15 @@ class DataBase
 public:
 	int Size()const;
 	void inputData();
-	void saveToFile(std::string file);
 	void loadFromFile(std::string file);
-	void printToConsole();
-	Student& operator[](const int index);
+	Student& operator [] (const int index);
 	void PushBack(const Student& student);
 private:
 	std::vector<Student>vec;
-	friend std::istream& operator >> (std::istream& ist, DataBase& obj);
-	friend std::ostream& operator << (std::ostream& ost, const DataBase& obj);
 };
+std::istream& operator >> (std::istream& ist, DataBase& data);
+std::ostream& operator << (std::ostream& ost, DataBase& data);
+void printToConsole(std::ostream& ost, DataBase& data);
+std::ostream& Func(std::ostream& ost,DataBase& data);
+void saveToFile(std::string file,DataBase& data);
 

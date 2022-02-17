@@ -9,11 +9,12 @@ int main()
 	setlocale(LC_ALL, "RUS");
 	DataBase database;
 	database.inputData();
-	database.saveToFile("File.txt");
+	saveToFile("File.txt", database);
 	DataBase secondDataBase;
 	try
 	{
 		secondDataBase.loadFromFile("File.txt");
+		printToConsole(std::cout, secondDataBase);
 	}
 	catch (const std::exception& exc)
 	{
@@ -24,7 +25,5 @@ int main()
 	{
 		std::cerr << "catch(...)";
 	}
-	secondDataBase.printToConsole();
-	
 	return 0;
 }

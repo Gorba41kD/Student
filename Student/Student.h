@@ -5,20 +5,20 @@ class Student
 {
 public:
 	Student();
-	void SetSurname(std::string surname);
-	std::string GetSurname();
+	void SetSurname(const std::string surname);
+	std::string GetSurname()const;
 	////////////////////////////////////////
-	void SetName(std::string name);
-	std::string GetName();
+	void SetName(const std::string name);
+	std::string GetName()const;
 	////////////////////////////////////////
-	void SetAge(int age);
-	int GetAge();
+	void SetAge(const int age);
+	int GetAge()const;
 	////////////////////////////////////////
-	void SetSpec(std::string spec);
-	std::string GetSpec();
+	void SetSpec(const std::string spec);
+	std::string GetSpec()const;
 	////////////////////////////////////////
-	void SetHobby(std::string hobby);
-	std::string GetHobby();
+	void SetHobby(const std::string hobby);
+	std::string GetHobby()const;
 	
 	bool Empty();
 private:
