@@ -4,6 +4,11 @@ Student::Student()
 {
 }
 
+Student::Student(std::string surname)
+{
+	m_surname = surname;
+}
+
 void Student::SetSurname(const std::string surname)
 {
 	m_surname = surname;
@@ -56,20 +61,26 @@ bool Student::Empty()
 	return m_surname.empty();
 }
 
-std::istream& operator>>(std::istream& ist, Student& student)
-{
-	ist >> student.m_surname >> student.m_name >> student.m_age >> student.m_spec >> student.m_hobby;
-	return ist;
-}
-
 std::ostream& operator<<(std::ostream& ost, const Student& student)
 {
-	ost
-		<< student.m_surname << " "
-		<< student.m_name << " "
-		<< student.m_age << " "
-		<< student.m_spec << " "
-		<< student.m_hobby << "\n";
+	ost << student.GetSurname() << " " << student.GetName() << " " << student.GetAge() << " " << student.GetSpec() << " " << student.GetHobby() << "\n";
 	return ost;
 }
 
+std::istream& operator>>(std::istream& ist, Student& student)
+{
+	
+	std::string temp;
+	ist >> temp;
+	student.SetSurname(temp);
+	ist >> temp;
+	student.SetName(temp);
+	int age;
+	ist >> age;
+	student.SetAge(age);
+	ist >> temp;
+	student.SetSpec(temp);
+	ist >> temp;
+	student.SetHobby(temp);
+	return ist;
+}

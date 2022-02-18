@@ -5,6 +5,7 @@ class Student
 {
 public:
 	Student();
+	Student(std::string surname);
 	void SetSurname(const std::string surname);
 	std::string GetSurname()const;
 	////////////////////////////////////////
@@ -27,7 +28,6 @@ private:
 	int m_age = 0;
 	std::string m_spec;
 	std::string m_hobby;
-	friend std::istream& operator >> (std::istream& ist, Student& student);
-	friend std::ostream& operator << (std::ostream& ost, const Student& student);
 };
-
+std::ostream& operator << (std::ostream& ost, const Student& student);
+std::istream& operator >> (std::istream& ist, Student& student);

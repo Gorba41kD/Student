@@ -29,6 +29,7 @@ void DataBase::inputData()
 		std::cin >> student;
 		vec.push_back(student);
 	}
+	std::cout << std::endl;
 	for (int i = 0,j = 0;i < vec.size(); ++i)
 	{
 		std::cout << "INFO about " << ++j << " : " << std::endl;
@@ -36,21 +37,45 @@ void DataBase::inputData()
 	}
 }
 
+void DataBase::printToConsole()
+{
+	std::cout << *this;
+}
+
 
 void DataBase::loadFromFile(std::string file)
 {
-	Student student;
+	
 	std::ifstream fin;
 	fin.open(file);
 	while (!fin.eof())
 	{
-		fin.ignore(32767, '\n');
+		Student student("");
 		fin >> student;
-		if(!student.Empty())
-		vec.push_back(student);
+		if (!student.Empty())
+		{
+			vec.push_back(student);
+		}
+		else break;
 	}
 	fin.close();
 	
+}
+
+void DataBase::saveToFile(std::string file)
+{
+	std::ofstream fout;
+	fout.open(file);
+	if (fout.is_open())
+	{
+		std::cout << "Good :" << std::endl;
+		fout << *this;
+		fout.close();
+	}
+	else
+	{
+		std::cerr << "Bad :\n" << std::endl;
+	}
 }
 
 Student& DataBase::operator[](const int index)
@@ -65,48 +90,27 @@ void DataBase::PushBack(const Student& student)
 
 std::istream& operator>>(std::istream& ist, DataBase& data)
 {
-	
 	Student student;
 	ist >> student;
 	data.PushBack(student);
 	return ist;
-	
+	/*while (ist.eof())
+	{
+		Student student;
+		ist >> student;
+		if (!student.Empty())data.PushBack(student);
+		else break;
+	}
+	return ist;*/
 }
 
 std::ostream& operator<<(std::ostream& ost,DataBase& data)
-{
-	Func(ost,data);
-	return ost;
-}
-
-void printToConsole(std::ostream& ost, DataBase& data)
-{
-	Func(ost, data);
-}
-
-std::ostream& Func(std::ostream& ost,DataBase& data)
 {
 	for (int i = 0; i < data.Size(); ++i)
 	{
 		ost << data[i];
 	}
-	ost << std::endl;
 	return ost;
 }
 
-void saveToFile(std::string file, DataBase& data)
-{
-	std::ofstream fout;
-	fout.open(file);
-	if (fout.is_open())
-	{
-		std::cout << "Good :" << std::endl;
-		fout << data;
-		fout.close();
-	}
-	else
-	{
-		std::cerr << "Bad :\n" << std::endl;
-	}
-}
 
